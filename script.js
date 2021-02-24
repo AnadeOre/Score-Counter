@@ -30,7 +30,7 @@ function updateScore(e) {
 
 }
 
-function gameEnds(e) {
+function gameEnds() {
     let playerList = [...currentPlayers.children]
     let pointsArray = new Array();
     let playerArray = new Array();
@@ -49,7 +49,7 @@ function gameEnds(e) {
     window.alert(`Player ${playerArray[index]} won!`)
 }
 
-function updateLeaderboard(e) {
+function updateLeaderboard() {
     let playerList = [...currentPlayers.children]
     let pointsArray = new Array();
     let playerArray = new Array();
@@ -83,11 +83,11 @@ function updateLeaderboard(e) {
 
 
 //Listeners
-enterButton.addEventListener('click', addPlayer);
-document.addEventListener('click', e => {
+enterButton.addEventListener('submit', addPlayer);
+document.addEventListener('submit', e => {
     if (e.explicitOriginalTarget.className === "addButton") {
-        updateScore(e.target);
-        updateLeaderboard(e.target);
+        updateScore();
+        updateLeaderboard();
     }
 });
 
