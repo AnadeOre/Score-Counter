@@ -83,8 +83,8 @@ function updateLeaderboard() {
 
 
 //Listeners
-enterButton.addEventListener('submit', addPlayer);
-document.addEventListener('submit', e => {
+enterButton.addEventListener('click', addPlayer);
+document.addEventListener('click', e => {
     if (e.explicitOriginalTarget.className === "addButton") {
         updateScore();
         updateLeaderboard();
