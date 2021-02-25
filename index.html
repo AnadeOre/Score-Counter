@@ -11,9 +11,17 @@
 </head>
 
 <body>
+    <h2>Settings</h2>
+    <div class="container">
+        <label for="finalScore">Final Score:</label>
+        <input type="number" title="finalScore" class="finalScore" value="0">
+
+        <input type="checkbox" name="reversePunct" class="reverseCheck">
+        <label for="reversePunct">Reverse</label>
+    </div>
+
     <h2>Add a player</h2>
     <div class="container">
-
         <label for="Name">Name:</label>
         <input type="text" title="Name" class="inputName">
         <label for="initialScore">Initial Score</label>
@@ -24,6 +32,11 @@
     <div class="currentPlayers">
     </div>
     <div class="leaderBoard">Leaderboard:
+    </div>
+
+    <div class="info">
+        Final Score: <div class="scoreEnd"></div>
+        Reverse: <div class="reverseTF"></div>
     </div>
 </body>
 

@@ -4,7 +4,12 @@ const initialScore = document.querySelector('.initialScore');
 const enterButton = document.querySelector('.enter');
 const currentPlayers = document.querySelector('.currentPlayers');
 const leaderBoardHTML = document.querySelector('.leaderBoard');
-let newScore, addNew, currentScore;
+const finalInput = document.querySelector('.finalScore');
+const reverseCheck = document.querySelector('.reverseCheck');
+const scoreEnd = document.querySelector('.scoreEnd');
+const reverseTF = document.querySelector('.reverseTF');
+
+let newScore, addNew, currentScore, finalScore;
 
 function addPlayer() {
     if (!initialScore.value) initialScore.value = 0;
@@ -13,7 +18,6 @@ function addPlayer() {
     <button class="addButton">Add</button>
     </li>`;
     currentPlayers.innerHTML += newPlayer;
-    console.log(currentPlayers)
     addNew = document.querySelectorAll('.addButton')
 
     inputName.value = '';
@@ -26,8 +30,8 @@ function updateScore(e) {
     let updatedScore = parseFloat(currentScore.textContent) + newScore;
     currentScore.textContent = updatedScore;
 
-    if (parseFloat(currentScore.textContent) >= 500) gameEnds(e);
-
+    if (parseFloat(currentScore.textContent) >= finalScore && !reverseCheck.checked) gameEnds();
+    if (parseFloat(currentScore.textContent) >= finalScore && reverseCheck.checked) gameEndsReverse();
 }
 
 function gameEnds() {
@@ -41,6 +45,25 @@ function gameEnds() {
     let value = pointsArray[0];
     for (var i = 0; i < pointsArray.length; i++) {
         if (pointsArray[i] < value) {
+            value = pointsArray[i];
+            index = i;
+        }
+    }
+
+    window.alert(`Player ${playerArray[index]} won!`)
+}
+
+function gameEndsReverse() {
+    let playerList = [...currentPlayers.children]
+    let pointsArray = new Array();
+    let playerArray = new Array();
+    playerList.forEach(player => pointsArray.push(parseFloat(player.childNodes[2].textContent)));
+    playerList.forEach(player => playerArray.push(player.childNodes[0].textContent));
+
+    let index = 0;
+    let value = pointsArray[0];
+    for (var i = 0; i < pointsArray.length; i++) {
+        if (pointsArray[i] > value) {
             value = pointsArray[i];
             index = i;
         }
@@ -83,10 +106,15 @@ function updateLeaderboard() {
 
 
 //Listeners
+finalInput.addEventListener('change', e => {
+    finalScore = e.explicitOriginalTarget.valueAsNumber;
+    scoreEnd.innerHTML = finalScore;
+    reverseTF.innerHTML = reverseCheck.checked.toString();
+});
 enterButton.addEventListener('click', addPlayer);
 document.addEventListener('click', e => {
     if (e.explicitOriginalTarget.className === "addButton") {
-        updateScore();
+        updateScore(e.explicitOriginalTarget);
         updateLeaderboard();
     }
 });

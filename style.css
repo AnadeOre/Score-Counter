@@ -142,5 +142,16 @@ button.addButton:hover {
     background-color: #2b465a;
 }
 
+.info {
+    display: grid;
+    grid-template-columns: 150px 100px;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+}
 
-
+.leaderBoard {
+    position: absolute;
+    top: 200px;
+    right: 40px;
+}
