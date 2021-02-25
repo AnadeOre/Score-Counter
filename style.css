@@ -19,11 +19,6 @@ h2 {
     padding: 2px;
 }
 
-@media screen and (max-width: 400px) {
-    .container {
-       max-width: 60%;
-    }
-}
 
 .currentPlayers {
 	margin: 0;
@@ -45,6 +40,9 @@ h2 {
 }
 
 @media screen and (max-width: 400px) {
+    .container {
+        max-width: 60%;
+     }
     .currentPlayers li {
        max-width: 80%;
     }
@@ -155,3 +153,5 @@ button.addButton:hover {
     top: 200px;
     right: 40px;
 }
+
+
