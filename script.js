@@ -119,4 +119,5 @@ document.addEventListener('click', e => {
     }
 });
 
+reverseCheck.addEventListener('click', e => reverseTF.innerHTML = reverseCheck.checked.toString());
 
